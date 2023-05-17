@@ -1,0 +1,31 @@
+:root {
+  /* Font */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Colors */
+  --clr-bg: #f7f7f8;
+
+  --clr-white: #fff;
+  --clr-grey-100: #f5f5f6;
+  --clr-grey-200: #eaebed;
+  --clr-grey-300: #d5d6dc;
+  --clr-grey-500: #acadb9;
+  --clr-grey-600: #7b7c88;
+  --clr-black: #232134;
+
+  --clr-blue-600: #5e96fc;
+  --clr-blue-500: #5e96fc;
+  --clr-blue-400: #92c1ff;
+  --clr-blue-300: #b7d6ff;
+  --clr-blue-200: #c9e0ff;
+  --clr-blue-100: #deecff;
+
+  /* Dimensions */
+  --desktop-max-w: 114rem;
+  --tablet-max-w: 80rem;
+  --mobile-min-w: 32rem;
+
+  --header-h: 8.4rem;
+}
