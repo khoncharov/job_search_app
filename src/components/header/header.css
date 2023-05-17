@@ -1,0 +1,43 @@
+.header {
+  height: var(--header-h);
+  background-color: var(--clr-white);
+}
+
+.header-container {
+  margin-inline: auto;
+  padding-inline: 1.2rem;
+  max-width: var(--desktop-max-w);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 14.2rem 1fr 14.2rem;
+  place-content: center;
+}
+
+.logo {
+  width: 14.1rem;
+  height: 3.6rem;
+}
+
+.navigation {
+  justify-self: center;
+  align-self: center;
+}
+
+.navigation-list {
+  display: flex;
+  width: 27.5rem;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .header-container {
+    min-width: var(--mobile-min-w);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .navigation-list {
+    width: 25.5rem;
+  }
+}
