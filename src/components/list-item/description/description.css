@@ -1,0 +1,46 @@
+.description-item {
+  max-width: 77.3rem;
+  padding: 2.4rem;
+  background-color: var(--clr-white);
+  border: 0.1rem solid var(--clr-grey-200);
+  border-radius: 1.2rem;
+  line-height: 1.4;
+}
+
+.description-item b {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+.description-item b:first-child {
+  margin-top: 0;
+}
+
+.description-item ul,
+.description-item p {
+  font-weight: var(--font-weight-regular);
+  font-size: 1.6rem;
+}
+
+.description-item ul {
+  margin-block: 1.6rem 2rem;
+  padding-left: 2.4rem;
+}
+
+.description-item ul:last-child {
+  margin-bottom: 0;
+}
+
+.description-item li {
+  list-style: disc;
+}
+
+.description-item p {
+  margin-top: 2rem;
+}
+
+.description-item p:first-child {
+  margin: 0;
+}
