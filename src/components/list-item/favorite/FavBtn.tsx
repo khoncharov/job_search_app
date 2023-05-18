@@ -11,7 +11,8 @@ export const FavBtnComponent = ({ itemId }: prop) => {
   const btnInitState = isFavoriteItem(itemId);
   const [btnPressed, setBtnPressed] = useState(btnInitState);
 
-  const favBtnHandler = () => {
+  const favBtnHandler = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setBtnPressed(() => {
       const state = !btnPressed;
       setFavoriteItem(itemId, state);
