@@ -1,4 +1,6 @@
-import { useRef } from 'react';
+import { useState } from 'react';
+import { isFavoriteItem, setFavoriteItem } from '../../../services/favItem';
+
 import './fav-btn.css';
 
 interface prop {
@@ -6,20 +8,23 @@ interface prop {
 }
 
 export const FavBtnComponent = ({ itemId }: prop) => {
-  const btnRef = useRef(null);
+  const btnInitState = isFavoriteItem(itemId);
+  const [btnPressed, setBtnPressed] = useState(btnInitState);
 
   const favBtnHandler = () => {
-    console.log(btnRef.current);
+    setBtnPressed(() => {
+      const state = !btnPressed;
+      setFavoriteItem(itemId, state);
+      return state;
+    });
   };
 
-  const isOn = itemId % 2 === 0;
   return (
     <button
       type="button"
       className="favorite"
       aria-label="Favorite item"
-      aria-pressed={isOn}
-      ref={btnRef}
+      aria-pressed={btnPressed}
       onClick={favBtnHandler}
     >
       <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">

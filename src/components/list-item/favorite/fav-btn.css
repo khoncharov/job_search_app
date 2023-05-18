@@ -8,12 +8,13 @@
 [aria-pressed='true'] path {
   fill: var(--clr-blue-500);
   stroke: var(--clr-blue-500);
+  transition: fill 0.2s;
 }
 
 [aria-pressed='false'] path {
   fill: transparent;
   stroke: var(--clr-grey-500);
-  transition: stroke 0.2s;
+  transition: stroke 0.2s, fill 0.2s;
 }
 
 [aria-pressed='false']:hover path {

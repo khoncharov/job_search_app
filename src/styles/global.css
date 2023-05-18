@@ -14,16 +14,19 @@ html {
 body {
   background-color: var(--clr-bg);
   font-size: 1.6rem;
+  line-height: 1.2;
   font-weight: var(--font-weight-regular);
 }
 
 a {
   text-decoration: none;
+  color: var(--clr-black);
 }
 
 button {
   border: none;
   font: inherit;
+  background-color: unset;
 }
 
 img {
