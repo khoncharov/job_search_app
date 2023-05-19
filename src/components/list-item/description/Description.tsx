@@ -1,11 +1,13 @@
 import './description.css';
 
-interface Prop {
+interface DescriptionItemProps {
   content: string;
 }
 
-export const DescriptionItemComponent = ({ content }: Prop) => {
+const DescriptionItemComponent = ({ content }: DescriptionItemProps) => {
   return (
     <div className="description-item" dangerouslySetInnerHTML={{ __html: content }}></div>
   );
 };
+
+export default DescriptionItemComponent;
