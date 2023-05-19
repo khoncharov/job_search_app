@@ -3,7 +3,7 @@ import FilterComponent from '../filter/Filter';
 import KeywordInputComponent from '../keyword-input/KeywordInput';
 import ListItemComponent from '../list-item/ListItem';
 
-const ListComponent = () => {
+const JobsListComponent = () => {
   const vacanciesList = getVacanciesList();
 
   return (
@@ -20,4 +20,4 @@ const ListComponent = () => {
   );
 };
 
-export default ListComponent;
+export default JobsListComponent;
