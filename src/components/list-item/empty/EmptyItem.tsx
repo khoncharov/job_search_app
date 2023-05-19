@@ -1,12 +1,15 @@
+import { Link } from 'react-router-dom';
 import './empty-list.css';
 
-export const EmptyItemComponent = () => {
+const EmptyItemComponent = () => {
   return (
     <div className="empty-item">
       <p>Упс, здесь еще ничего нет!</p>
-      <button className="empty-item-btn" type="button">
+      <Link className="empty-item-btn" to="/vacancies">
         Поиск Вакансий
-      </button>
+      </Link>
     </div>
   );
 };
+
+export default EmptyItemComponent;
