@@ -1,5 +1,5 @@
-import HeaderComponent from './header/Header';
-import { Outlet } from 'react-router-dom';
+import HeaderComponent from '../components/header/Header';
+import { Navigate, Outlet } from 'react-router-dom';
 import './root.css';
 
 const RootComponent = () => {
@@ -7,6 +7,7 @@ const RootComponent = () => {
     <>
       <HeaderComponent />
       <Outlet />
+      <Navigate to="/vacancies" />
     </>
   );
 };
