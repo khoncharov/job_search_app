@@ -1,6 +1,6 @@
 .main-list {
   max-width: var(--desktop-max-w);
-  margin-top: 4rem;
+  margin-block: 4rem 1.6rem;
   margin-inline: auto;
   padding-inline: 1.2rem;
   display: grid;
@@ -11,6 +11,14 @@
 .list-container {
   display: grid;
   gap: 1.6rem;
+}
+
+.filling-container {
+  width: 100%;
+  height: calc(100vh - var(--header-h));
+  display: grid;
+  place-content: center;
+  background-color: var(--clr-bg);
 }
 
 @media screen and (max-width: 800px) {

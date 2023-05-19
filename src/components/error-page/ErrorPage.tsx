@@ -14,7 +14,7 @@ const ErrorPageComponent = () => {
   }
 
   return (
-    <div className="auth-container">
+    <div className="filling-container">
       <p>{errorStr}</p>
       <Link className="empty-item-btn" to="/">
         Home page
