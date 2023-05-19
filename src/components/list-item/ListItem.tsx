@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CardItem from '../../types/card-item';
 import FavBtnComponent from './favorite/FavBtn';
 import './list-item.css';
@@ -24,22 +25,14 @@ const ListItemComponent = ({
     payment = 'не указана';
   }
 
-  const onCardClickHandler = () => {
-    console.log(new Date());
-  };
-
   return (
-    <li
-      className="card"
-      role="button"
-      tabIndex={0}
-      onClick={onCardClickHandler}
-      aria-labelledby={`title-${id}`}
-    >
+    <li className="card">
       <article className="card-info__wrapper">
-        <h2 className="card-title" id={`title-${id}`}>
-          {profession}
-        </h2>
+        <Link to={`./${id}`}>
+          <h2 className="card-title" id={`title-${id}`}>
+            {profession}
+          </h2>
+        </Link>
         <div>
           <span className="card-payment">з/п {payment}</span>
           <span className="card-delimiter">•</span>

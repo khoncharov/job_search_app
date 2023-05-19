@@ -7,7 +7,6 @@
   display: grid;
   grid-template-columns: 1fr 2.4rem;
   gap: 1rem;
-  cursor: pointer;
 }
 
 .card-info__wrapper {
