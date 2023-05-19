@@ -1,20 +1,21 @@
 import logoSvg from '../../assets/logo.svg';
+import { Link, NavLink } from 'react-router-dom';
 import './header.css';
 
-export const HeaderComponent = () => {
+const HeaderComponent = () => {
   return (
     <header className="header">
       <div className="header-container">
-        <a className="logo" href="./">
+        <Link className="logo" to="/" reloadDocument>
           <img src={logoSvg} alt="Site logo" width="141" height="36" />
-        </a>
+        </Link>
         <nav className="navigation">
           <ul className="navigation-list">
             <li>
-              <a href="#">Поиск Вакансий</a>
+              <NavLink to="/vacancies">Поиск Вакансий</NavLink>
             </li>
             <li>
-              <a href="#">Избранное</a>
+              <NavLink to="/favorites">Избранное</NavLink>
             </li>
           </ul>
         </nav>
@@ -22,3 +23,5 @@ export const HeaderComponent = () => {
     </header>
   );
 };
+
+export default HeaderComponent;

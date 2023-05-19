@@ -29,6 +29,11 @@
   justify-content: space-between;
 }
 
+.active {
+  font-weight: var(--font-weight-medium);
+  color: var(--clr-blue-500);
+}
+
 @media screen and (max-width: 800px) {
   .header-container {
     min-width: var(--mobile-min-w);
