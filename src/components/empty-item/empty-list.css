@@ -1,4 +1,5 @@
 .empty-item {
+  justify-self: center;
   max-width: 33rem;
   background-image: url(/src/assets/emty-item.svg);
   background-size: 24rem 23rem;
