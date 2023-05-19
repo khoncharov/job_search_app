@@ -3,9 +3,6 @@
   margin-block: 4rem 1.6rem;
   margin-inline: auto;
   padding-inline: 1.2rem;
-  display: grid;
-  grid-template-columns: 31.5rem 1fr;
-  gap: 2.8rem;
 }
 
 .list-container {
@@ -25,8 +22,5 @@
   .main-list {
     min-width: var(--mobile-min-w);
     margin-top: 1.6rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
   }
 }

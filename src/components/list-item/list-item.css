@@ -1,6 +1,8 @@
 .card {
+  justify-self: center;
   padding: 2.4rem;
   max-width: 77.3rem;
+  width: 100%;
   background-color: var(--clr-white);
   border: 0.1rem solid var(--clr-grey-200);
   border-radius: 1.2rem;
