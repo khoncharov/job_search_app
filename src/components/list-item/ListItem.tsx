@@ -28,7 +28,7 @@ const ListItemComponent = ({
   return (
     <li className="card">
       <article className="card-info__wrapper">
-        <Link to={`./${id}`}>
+        <Link to={`/vacancies/${id}`}>
           <h2 className="card-title" id={`title-${id}`}>
             {profession}
           </h2>
