@@ -8,19 +8,23 @@ const JobsFavoriteListComponent = () => {
 
   const vacanciesList = getVacanciesList().filter((v) => favoriteItems.includes(v.id));
 
+  if (vacanciesList.length) {
+    return (
+      <main className="main-list">
+        <ul className="list-container">
+          {vacanciesList.map((v) => (
+            <ListItemComponent key={v.id} {...v} />
+          ))}
+        </ul>
+      </main>
+    );
+  }
+
   return (
     <main className="main-list">
-      {vacanciesList.length ? (
-        vacanciesList.map((v) => (
-          <ul className="list-container">
-            <ListItemComponent key={v.id} {...v} />
-          </ul>
-        ))
-      ) : (
-        <div className="list-container">
-          <EmptyItemComponent />
-        </div>
-      )}
+      <div className="list-container">
+        <EmptyItemComponent />
+      </div>
     </main>
   );
 };
