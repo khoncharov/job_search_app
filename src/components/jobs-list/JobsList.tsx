@@ -22,7 +22,7 @@ const JobsListComponent = () => {
             <KeywordInputComponent />
             <ul className="list-container">
               {vacanciesList.map((v) => (
-                <ListItemComponent key={v.id} {...v} />
+                <ListItemComponent key={v.id} {...v} isAlone={false} />
               ))}
             </ul>
           </div>

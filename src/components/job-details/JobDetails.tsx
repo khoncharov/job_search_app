@@ -16,8 +16,6 @@ const JobDetailsComponent = () => {
   let v: CardItem | undefined;
   if (id && Number.isInteger(+id)) {
     v = vacanciesList.find((v) => {
-      console.log(v.id, id);
-
       return v.id === Number(id);
     });
   }
@@ -32,7 +30,7 @@ const JobDetailsComponent = () => {
       <ul className="list-container">
         {v ? (
           <>
-            <ListItemComponent key={1} {...v} />
+            <ListItemComponent key={1} {...v} isAlone={true} />
             <DescriptionItemComponent key={2} content={v.description} />
           </>
         ) : (

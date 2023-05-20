@@ -3,6 +3,10 @@ import CardItem from '../../types/card-item';
 import FavBtnComponent from './favorite/FavBtn';
 import './list-item.css';
 
+interface ListItemProps extends CardItem {
+  isAlone: boolean;
+}
+
 const ListItemComponent = ({
   id,
   profession,
@@ -11,7 +15,8 @@ const ListItemComponent = ({
   paymentFrom,
   paymentTo,
   currency,
-}: CardItem) => {
+  isAlone,
+}: ListItemProps) => {
   let payment;
 
   if (paymentFrom && paymentTo) {
@@ -28,16 +33,31 @@ const ListItemComponent = ({
   return (
     <li className="card">
       <article className="card-info__wrapper">
-        <Link to={`/vacancies/${id}`}>
-          <h2 className="card-title" id={`title-${id}`}>
-            {profession}
-          </h2>
-        </Link>
-        <div>
-          <span className="card-payment">з/п {payment}</span>
-          <span className="card-delimiter">•</span>
-          <span className="card-type_of_work">{typeOfWork}</span>
-        </div>
+        {isAlone ? (
+          <>
+            <h2 className="card-title-2" id={`title-${id}`}>
+              {profession}
+            </h2>
+            <div>
+              <span className="card-payment-2">з/п {payment}</span>
+              <span className="card-delimiter-2">•</span>
+              <span className="card-type_of_work-2">{typeOfWork}</span>
+            </div>
+          </>
+        ) : (
+          <>
+            <Link to={`/vacancies/${id}`}>
+              <h2 className="card-title" id={`title-${id}`}>
+                {profession}
+              </h2>
+            </Link>
+            <div>
+              <span className="card-payment">з/п {payment}</span>
+              <span className="card-delimiter">•</span>
+              <span>{typeOfWork}</span>
+            </div>
+          </>
+        )}
         <p className="card-location">{location}</p>
       </article>
       <FavBtnComponent itemId={id} />

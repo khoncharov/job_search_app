@@ -18,7 +18,7 @@ const JobsFavoriteListComponent = () => {
       <main className="main-list">
         <ul className="list-container">
           {vacanciesList.map((v) => (
-            <ListItemComponent key={v.id} {...v} />
+            <ListItemComponent key={v.id} {...v} isAlone={false} />
           ))}
         </ul>
       </main>
