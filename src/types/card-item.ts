@@ -1,4 +1,4 @@
-export default interface CardItem {
+export default interface Vacancy {
   id: number;
   profession: string;
   firmName: string;

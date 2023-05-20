@@ -4,7 +4,7 @@ import { getVacanciesList } from '../../MOCK_DATA';
 import ListItemComponent from '../list-item/ListItem';
 import EmptyItemComponent from '../empty-item/EmptyItem';
 import DescriptionItemComponent from './description/Description';
-import CardItem from '../../types/card-item';
+import Vacancy from '../../types/card-item';
 import './job-details.css';
 
 const JobDetailsComponent = () => {
@@ -13,7 +13,7 @@ const JobDetailsComponent = () => {
   const match = useMatches();
   const id = match[0].params.id;
 
-  let v: CardItem | undefined;
+  let v: Vacancy | undefined;
   if (id && Number.isInteger(+id)) {
     v = vacanciesList.find((v) => {
       return v.id === Number(id);

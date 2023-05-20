@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import CardItem from '../../types/card-item';
+import Vacancy from '../../types/card-item';
 import FavBtnComponent from './favorite/FavBtn';
 import './list-item.css';
 
-interface ListItemProps extends CardItem {
+interface ListItemProps extends Vacancy {
   isAlone: boolean;
 }
 
