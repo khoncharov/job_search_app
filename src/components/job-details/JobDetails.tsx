@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { useMatches } from 'react-router-dom';
 import { getVacanciesList } from '../../MOCK_DATA';
 import ListItemComponent from '../list-item/ListItem';
 import EmptyItemComponent from '../empty-item/EmptyItem';
 import DescriptionItemComponent from './description/Description';
+import CardItem from '../../types/card-item';
 import './job-details.css';
 
 const JobDetailsComponent = () => {
@@ -11,7 +13,7 @@ const JobDetailsComponent = () => {
   const match = useMatches();
   const id = match[0].params.id;
 
-  let v;
+  let v: CardItem | undefined;
   if (id && Number.isInteger(+id)) {
     v = vacanciesList.find((v) => {
       console.log(v.id, id);
@@ -19,6 +21,11 @@ const JobDetailsComponent = () => {
       return v.id === Number(id);
     });
   }
+
+  useEffect(() => {
+    document.title = `Вакансия ${v ? v.profession : 'не найдена'}`;
+    window.scrollTo(0, 0);
+  });
 
   return (
     <main className="main-list">

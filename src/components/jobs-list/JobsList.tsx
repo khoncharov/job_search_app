@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { getVacanciesList } from '../../MOCK_DATA';
 import EmptyItemComponent from '../empty-item/EmptyItem';
 import FilterComponent from '../filter/Filter';
@@ -6,6 +7,10 @@ import ListItemComponent from '../list-item/ListItem';
 import './jobs-list.css';
 
 const JobsListComponent = () => {
+  useEffect(() => {
+    document.title = `Поиск Вакансий`;
+  });
+
   const vacanciesList = getVacanciesList();
 
   if (vacanciesList.length) {
