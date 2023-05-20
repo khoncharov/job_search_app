@@ -6,7 +6,7 @@ interface DescriptionItemProps {
 
 const DescriptionItemComponent = ({ content }: DescriptionItemProps) => {
   return (
-    <div className="description-item" dangerouslySetInnerHTML={{ __html: content }}></div>
+    <li className="description-item" dangerouslySetInnerHTML={{ __html: content }}></li>
   );
 };
 
