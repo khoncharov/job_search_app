@@ -1,4 +1,4 @@
-export default interface Vacancy {
+export interface Vacancy {
   id: number;
   profession: string;
   firmName: string;
@@ -8,4 +8,9 @@ export default interface Vacancy {
   typeOfWork: string;
   location: string;
   description: string;
+}
+
+export interface Catalog {
+  title: string;
+  key: number;
 }
