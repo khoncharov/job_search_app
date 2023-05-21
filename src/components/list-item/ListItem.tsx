@@ -35,9 +35,7 @@ const ListItemComponent = ({
       <article className="card-info__wrapper">
         {isAlone ? (
           <>
-            <h2 className="card-title-2" id={`title-${id}`}>
-              {profession}
-            </h2>
+            <h2 className="card-title-2">{profession}</h2>
             <div>
               <span className="card-payment-2">з/п {payment}</span>
               <span className="card-delimiter-2">•</span>
@@ -47,9 +45,7 @@ const ListItemComponent = ({
         ) : (
           <>
             <Link to={`/vacancies/${id}`}>
-              <h2 className="card-title" id={`title-${id}`}>
-                {profession}
-              </h2>
+              <h2 className="card-title">{profession}</h2>
             </Link>
             <div>
               <span className="card-payment">з/п {payment}</span>
