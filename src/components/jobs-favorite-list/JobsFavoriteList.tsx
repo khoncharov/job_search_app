@@ -7,7 +7,7 @@ import ListItemComponent from '../list-item/ListItem';
 const JobsFavoriteListComponent = () => {
   useEffect(() => {
     document.title = `Избранное`;
-  });
+  }, []);
 
   const favoriteItems = getFavoriteItems();
 

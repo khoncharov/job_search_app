@@ -23,7 +23,7 @@ const JobDetailsComponent = () => {
   useEffect(() => {
     document.title = `Вакансия ${v ? v.profession : 'не найдена'}`;
     window.scrollTo(0, 0);
-  });
+  }, [v]);
 
   return (
     <main className="main-list">

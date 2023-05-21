@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getVacanciesList } from '../../MOCK_DATA';
 import EmptyItemComponent from '../empty-item/EmptyItem';
 import FilterComponent from '../filter/Filter';
@@ -7,9 +7,14 @@ import ListItemComponent from '../list-item/ListItem';
 import './jobs-list.css';
 
 const JobsListComponent = () => {
+  // const [cataloge, setCataloge] = useState<number>(33);
+  // const [keyword, setKeyword] = useState<string>('');
+  // const [paymentFrom, setPaymentFrom] = useState<number>(0);
+  // const [paymentTo, setPaymentTo] = useState<number>(0);
+
   useEffect(() => {
     document.title = `Поиск Вакансий`;
-  });
+  }, []);
 
   const vacanciesList = getVacanciesList();
 
