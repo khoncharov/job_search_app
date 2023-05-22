@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Vacancy from '../../types/card-item';
+import { Vacancy } from '../../types/vacancy';
 import FavBtnComponent from './favorite/FavBtn';
 import './list-item.css';
 
