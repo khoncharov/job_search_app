@@ -55,7 +55,21 @@ export const getCatalogues = async () => {
   return response;
 };
 
-/* [ keyword, payment from to, domain id ] */
+export const getVacancies = async (token: string, params: { catalogues: number }) => {
+  const searchParams = new URLSearchParams();
+  searchParams.append('catalogues', params.catalogues.toString());
+  /* [ keyword, payment from to, domain id ] */
+
+  const response = await fetch(`${API_ENDPOINT.vacancies}?${searchParams.toString()}`, {
+    headers: {
+      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
+      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response;
+};
 
 export const getFavVacancies = async (token: string, ids: number[]) => {
   const searchParams = new URLSearchParams();

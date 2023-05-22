@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
-import { getVacanciesList } from '../../MOCK_DATA';
+import { useEffect } from 'react';
 import EmptyItemComponent from '../empty-item/EmptyItem';
 import FilterComponent from '../filter/Filter';
 import KeywordInputComponent from '../keyword-input/KeywordInput';
 import ListItemComponent from '../list-item/ListItem';
+import { useLoaderData } from 'react-router-dom';
+import { Vacancy } from '../../types/vacancy';
 import './jobs-list.css';
 
 const JobsListComponent: React.FC = () => {
@@ -12,11 +13,11 @@ const JobsListComponent: React.FC = () => {
   // const [paymentFrom, setPaymentFrom] = useState<number>(0);
   // const [paymentTo, setPaymentTo] = useState<number>(0);
 
+  const vacanciesList = useLoaderData() as Vacancy[];
+
   useEffect(() => {
     document.title = 'Поиск Вакансий';
   }, []);
-
-  const vacanciesList = getVacanciesList();
 
   if (vacanciesList.length) {
     return (
