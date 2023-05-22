@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { isFavoriteItem, setFavoriteItem } from '../../../services/favItem';
+import { isFavoriteItem, setFavoriteItem } from '../../../services/favorite-storage';
 import './fav-btn.css';
 
 interface FavBtnProps {

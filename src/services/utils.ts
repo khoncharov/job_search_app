@@ -1,7 +1,8 @@
 import { AccessTokenInfo } from '../types/token';
-import { Vacancy } from '../types/vacancy';
+import { Catalog, Vacancy } from '../types/vacancy';
 import {
   AccessTokenResponse,
+  CatalogResponse,
   VacanciesResponse,
   VacancyResponse,
 } from '../types/response';
@@ -13,6 +14,12 @@ export const mapAccessTokenResponse = (res: AccessTokenResponse): AccessTokenInf
   expiresIn: res.expires_in,
   tokenType: res.token_type,
 });
+
+export const mapCatalogResponse = (res: CatalogResponse[]): Catalog[] =>
+  res.map((i) => ({
+    key: i.key,
+    title: i.title,
+  }));
 
 export const mapVacancyResponse = (res: VacancyResponse): Vacancy => ({
   id: res.id,

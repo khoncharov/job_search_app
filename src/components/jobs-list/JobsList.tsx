@@ -6,14 +6,14 @@ import KeywordInputComponent from '../keyword-input/KeywordInput';
 import ListItemComponent from '../list-item/ListItem';
 import './jobs-list.css';
 
-const JobsListComponent = () => {
-  // const [cataloge, setCataloge] = useState<number>(33);
+const JobsListComponent: React.FC = () => {
+  // const [catalog, setCatalog] = useState<number>(33);
   // const [keyword, setKeyword] = useState<string>('');
   // const [paymentFrom, setPaymentFrom] = useState<number>(0);
   // const [paymentTo, setPaymentTo] = useState<number>(0);
 
   useEffect(() => {
-    document.title = `Поиск Вакансий`;
+    document.title = 'Поиск Вакансий';
   }, []);
 
   const vacanciesList = getVacanciesList();

@@ -5,6 +5,7 @@ import { rootLoader } from './pages/root-loader.ts';
 import JobsListComponent from './components/jobs-list/JobsList.tsx';
 import JobDetailsComponent from './components/job-details/JobDetails.tsx';
 import jobDetailsLoader from './components/job-details/job-details-loader.ts';
+import jobsListLoader from './components/jobs-list/jobs-list-loader.ts';
 import JobsFavoriteListComponent from './components/jobs-favorite-list/JobsFavoriteList.tsx';
 import jobFavoriteLoader from './components/jobs-favorite-list/job-favorite-loader.ts';
 import './index.css';
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: 'vacancies',
         element: <JobsListComponent />,
+        loader: jobsListLoader,
       },
       {
         path: 'vacancies/:id',

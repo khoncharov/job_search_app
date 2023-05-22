@@ -44,22 +44,16 @@ export const refreshAccessToken = async (refreshToken: string) => {
   return response;
 };
 
-// export const getCatalogues = async () => {
-//   const response = await fetch(API_ENDPOINT.catalogues, {
-//     headers: {
-//       'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
-//       'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
-//     },
-//   });
+export const getCatalogues = async () => {
+  const response = await fetch(API_ENDPOINT.catalogues, {
+    headers: {
+      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
+      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
+    },
+  });
 
-//   if (!response.ok) {
-//     const data = (await response.json()) as CustomErrorResponse;
-//     throw { message: data.error.message, status: data.error.code };
-//   }
-
-//   const data = (await response.json()) as Catalog[];
-//   return data;
-// };
+  return response;
+};
 
 /* [ keyword, payment from to, domain id ] */
 

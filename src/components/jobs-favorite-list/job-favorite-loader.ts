@@ -1,5 +1,5 @@
 import { LoaderFunction } from 'react-router-dom';
-import { getFavoriteItems } from '../../services/favItem';
+import { getFavoriteItems } from '../../services/favorite-storage';
 import { getFavVacancies } from '../../services/api';
 import { checkToken } from '../../pages/root-loader';
 import { VacanciesResponse } from '../../types/response';
