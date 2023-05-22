@@ -61,12 +61,26 @@ export const refreshAccessToken = async (refreshToken: string) => {
 //   return data;
 // };
 
-/* [ keyword, payment from to, domain id ] or [ job id array ] */
-export const getVacancies = () => {
-  throw 'not implemented';
+/* [ keyword, payment from to, domain id ] */
+
+export const getFavVacancies = async (token: string, ids: number[]) => {
+  const searchParams = new URLSearchParams();
+  ids.forEach((id) => {
+    searchParams.append('ids[]', id.toString());
+  });
+
+  const response = await fetch(`${API_ENDPOINT.vacancies}?${searchParams.toString()}`, {
+    headers: {
+      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
+      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response;
 };
 
-export const getVacancy = async (jobId: string, token: string) => {
+export const getVacancy = async (token: string, jobId: string) => {
   const response = await fetch(`${API_ENDPOINT.vacancies}${jobId}/`, {
     headers: {
       'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,

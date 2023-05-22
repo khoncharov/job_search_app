@@ -6,6 +6,7 @@ import JobsListComponent from './components/jobs-list/JobsList.tsx';
 import JobDetailsComponent from './components/job-details/JobDetails.tsx';
 import jobDetailsLoader from './components/job-details/job-details-loader.ts';
 import JobsFavoriteListComponent from './components/jobs-favorite-list/JobsFavoriteList.tsx';
+import jobFavoriteLoader from './components/jobs-favorite-list/job-favorite-loader.ts';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
         element: <JobDetailsComponent />,
         loader: jobDetailsLoader,
       },
-      { path: 'favorites', element: <JobsFavoriteListComponent /> },
+      {
+        path: 'favorites',
+        element: <JobsFavoriteListComponent />,
+        loader: jobFavoriteLoader,
+      },
     ],
   },
 ]);

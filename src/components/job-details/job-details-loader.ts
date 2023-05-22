@@ -20,7 +20,7 @@ interface Args extends ActionFunctionArgs {
 const jobDetailsLoader: LoaderFunction = async ({ params }: Args) => {
   if (params.id) {
     const tokenInfo = await checkToken();
-    const response = await getVacancy(params.id, tokenInfo.accessToken);
+    const response = await getVacancy(tokenInfo.accessToken, params.id);
 
     if (!response.ok) {
       throw response;

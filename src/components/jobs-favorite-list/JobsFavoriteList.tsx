@@ -1,17 +1,15 @@
 import { useEffect } from 'react';
-import { getVacanciesList } from '../../MOCK_DATA';
-import { getFavoriteItems } from '../../services/favItem';
 import EmptyItemComponent from '../empty-item/EmptyItem';
 import ListItemComponent from '../list-item/ListItem';
+import { useLoaderData } from 'react-router-dom';
+import { Vacancy } from '../../types/vacancy';
 
 const JobsFavoriteListComponent = () => {
   useEffect(() => {
     document.title = 'Избранное';
   }, []);
 
-  const favoriteItems = getFavoriteItems();
-
-  const vacanciesList = getVacanciesList().filter((v) => favoriteItems.includes(v.id));
+  const vacanciesList = useLoaderData() as Vacancy[];
 
   if (vacanciesList.length) {
     return (
