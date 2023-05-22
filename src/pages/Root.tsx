@@ -1,11 +1,19 @@
 import HeaderComponent from '../components/header/Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigation } from 'react-router-dom';
+import SpinnerComponent from '../components/spinner/Spinner';
 
 const RootComponent = () => {
+  const navigation = useNavigation();
   return (
     <>
       <HeaderComponent />
-      <Outlet />
+      {navigation.state === 'loading' ? (
+        <div className="overlay-container">
+          <SpinnerComponent />
+        </div>
+      ) : (
+        <Outlet />
+      )}
     </>
   );
 };
