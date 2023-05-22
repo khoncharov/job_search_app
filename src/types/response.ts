@@ -8,7 +8,7 @@ export interface AccessTokenResponse {
   token_type: string;
 }
 
-export interface ErrorResponse {
+export interface CustomErrorResponse {
   error: {
     code: number;
     message: string;
