@@ -4,7 +4,7 @@ import ListItemComponent from '../list-item/ListItem';
 import DescriptionItemComponent from './description/Description';
 import { Vacancy } from '../../types/vacancy';
 
-const JobDetailsComponent = () => {
+const JobDetailsComponent: React.FC = () => {
   const v = useLoaderData() as Vacancy | null;
 
   useEffect(() => {

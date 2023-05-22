@@ -6,7 +6,7 @@ interface FavBtnProps {
   itemId: number;
 }
 
-const FavBtnComponent = ({ itemId }: FavBtnProps) => {
+const FavBtnComponent: React.FC<FavBtnProps> = ({ itemId }) => {
   const btnInitState = isFavoriteItem(itemId);
   const [btnPressed, setBtnPressed] = useState(btnInitState);
 

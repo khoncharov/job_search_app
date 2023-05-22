@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './empty-list.css';
 
-const EmptyItemComponent = () => {
+const EmptyItemComponent: React.FC = () => {
   return (
     <div className="empty-item">
       <p>Упс, здесь еще ничего нет!</p>

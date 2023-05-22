@@ -3,7 +3,7 @@ import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom';
 import { CustomErrorResponse } from '../../types/response';
 import './error-page.css';
 
-const ErrorPageComponent = () => {
+const ErrorPageComponent: React.FC = () => {
   const error = useRouteError();
 
   let errorStr;

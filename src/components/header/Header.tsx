@@ -2,7 +2,7 @@ import logoSvg from '../../assets/logo.svg';
 import { Link, NavLink } from 'react-router-dom';
 import './header.css';
 
-const HeaderComponent = () => {
+const HeaderComponent: React.FC = () => {
   return (
     <header className="header">
       <div className="header-container">

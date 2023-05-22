@@ -3,7 +3,7 @@ import { Outlet, useNavigation } from 'react-router-dom';
 import SpinnerComponent from '../components/spinner/Spinner';
 import { useEffect } from 'react';
 
-const RootComponent = () => {
+const RootComponent: React.FC = () => {
   const navigation = useNavigation();
 
   useEffect(() => {

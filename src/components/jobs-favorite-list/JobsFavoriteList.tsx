@@ -4,7 +4,7 @@ import ListItemComponent from '../list-item/ListItem';
 import { useLoaderData } from 'react-router-dom';
 import { Vacancy } from '../../types/vacancy';
 
-const JobsFavoriteListComponent = () => {
+const JobsFavoriteListComponent: React.FC = () => {
   useEffect(() => {
     document.title = 'Избранное';
   }, []);

@@ -1,6 +1,6 @@
 import './spinner.css';
 
-export const SpinnerComponent = () => {
+export const SpinnerComponent: React.FC = () => {
   return (
     <div className="spinner">
       <div className="spinner-mark"></div>

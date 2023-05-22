@@ -7,7 +7,7 @@ interface ListItemProps extends Vacancy {
   isAlone: boolean;
 }
 
-const ListItemComponent = ({
+const ListItemComponent: React.FC<ListItemProps> = ({
   id,
   profession,
   typeOfWork,
@@ -16,7 +16,7 @@ const ListItemComponent = ({
   paymentTo,
   currency,
   isAlone,
-}: ListItemProps) => {
+}) => {
   let payment;
 
   if (paymentFrom && paymentTo) {
