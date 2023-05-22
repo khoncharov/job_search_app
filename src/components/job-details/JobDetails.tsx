@@ -1,24 +1,11 @@
 import { useEffect } from 'react';
-import { useMatches } from 'react-router-dom';
-import { getVacanciesList } from '../../MOCK_DATA';
+import { useLoaderData } from 'react-router-dom';
 import ListItemComponent from '../list-item/ListItem';
-import EmptyItemComponent from '../empty-item/EmptyItem';
 import DescriptionItemComponent from './description/Description';
-import Vacancy from '../../types/card-item';
-import './job-details.css';
+import { Vacancy } from '../../types/vacancy';
 
 const JobDetailsComponent = () => {
-  const vacanciesList = getVacanciesList();
-
-  const match = useMatches();
-  const id = match[0].params.id;
-
-  let v: Vacancy | undefined;
-  if (id && Number.isInteger(+id)) {
-    v = vacanciesList.find((v) => {
-      return v.id === Number(id);
-    });
-  }
+  const v = useLoaderData() as Vacancy | null;
 
   useEffect(() => {
     document.title = `Вакансия ${v ? v.profession : 'не найдена'}`;
@@ -34,7 +21,7 @@ const JobDetailsComponent = () => {
             <DescriptionItemComponent key={2} content={v.description} />
           </>
         ) : (
-          <EmptyItemComponent />
+          ''
         )}
       </ul>
     </main>

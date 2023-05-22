@@ -28,3 +28,8 @@ export const mapVacancyResponse = (res: VacancyResponse): Vacancy => ({
 
 export const mapVacanciesResponse = (res: VacanciesResponse): Vacancy[] =>
   res.objects.map((v) => mapVacancyResponse(v));
+
+export const isExpiredToken = (tokenInfo: AccessTokenInfo): boolean => {
+  const HALF_HOUR = 1000 * 60 * 30;
+  return Date.now() + HALF_HOUR > tokenInfo.ttl;
+};
