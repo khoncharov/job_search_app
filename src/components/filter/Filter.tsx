@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { NumberInput, Select, rem } from '@mantine/core';
+import { NumberInput, Select } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 import { getCatalogItems } from '../../services/catalogues-storage';
 import { FilterState, SearchAction, SearchBy } from '../jobs-list/jobs-list-reducer';
 import { DEFAULT_CATALOG } from '../../const';
+import { inputStyling, selectStyling } from './filter-styles';
 import './filter.css';
 
 interface SelectItem {
@@ -80,11 +81,12 @@ const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter
             data={selectList}
             radius="0.8rem"
             size="xl"
-            rightSection={<IconChevronDown size={rem(40)} />}
+            rightSection={<IconChevronDown />}
             rightSectionWidth={30}
             defaultValue={filterInitState.catalog}
             onChange={catalogChangeHandler}
             value={filterState.catalog}
+            styles={selectStyling}
           />
         </div>
         <fieldset>
@@ -97,6 +99,7 @@ const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter
               defaultValue={filterInitState.paymentFrom}
               onChange={inputFromChangeHandler}
               value={filterState.paymentFrom}
+              styles={inputStyling}
             />
             <NumberInput
               placeholder="До"
@@ -105,6 +108,7 @@ const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter
               defaultValue={filterInitState.paymentTo}
               onChange={inputToChangeHandler}
               value={filterState.paymentTo}
+              styles={inputStyling}
             />
           </div>
         </fieldset>
