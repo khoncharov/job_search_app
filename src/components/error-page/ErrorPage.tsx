@@ -27,7 +27,7 @@ const ErrorPageComponent: React.FC = () => {
   return (
     <div className="filling-container">
       <p>{errorStr}</p>
-      <Link className="empty-item-btn" to="/" reloadDocument>
+      <Link className="empty-item-btn" to="/vacancies" reloadDocument>
         Home page
       </Link>
     </div>

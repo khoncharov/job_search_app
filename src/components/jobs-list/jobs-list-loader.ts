@@ -1,10 +1,8 @@
 import { LoaderFunction } from 'react-router-dom';
 import { isCataloguesLoaded, setCatalogItems } from '../../services/catalogues-storage';
-import { getCatalogues, getVacancies } from '../../services/api';
-import { CatalogResponse, VacanciesResponse } from '../../types/response';
-import { mapCatalogResponse, mapVacanciesResponse } from '../../services/utils';
-import { checkToken } from '../../pages/root-loader';
-import { DEFAULT_CATALOG, DEFAULT_PUBLISHED } from '../../const';
+import { getCatalogues } from '../../services/api';
+import { CatalogResponse } from '../../types/response';
+import { mapCatalogResponse } from '../../services/utils';
 
 const jobsListLoader: LoaderFunction = async () => {
   if (!isCataloguesLoaded()) {
@@ -18,18 +16,7 @@ const jobsListLoader: LoaderFunction = async () => {
     setCatalogItems(mapCatalogResponse(data));
   }
 
-  const tokenInfo = await checkToken();
-  const response = await getVacancies(tokenInfo.accessToken, {
-    catalogues: DEFAULT_CATALOG,
-    published: DEFAULT_PUBLISHED,
-  });
-
-  if (!response.ok) {
-    throw response;
-  }
-
-  const data = (await response.json()) as VacanciesResponse;
-  return mapVacanciesResponse(data);
+  return null;
 };
 
 export default jobsListLoader;

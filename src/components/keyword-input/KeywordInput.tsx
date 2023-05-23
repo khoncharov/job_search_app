@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { SearchAction, SearchBy } from '../jobs-list/jobs-list-reducer';
 import './keyword-input.css';
 
-const KeywordInputComponent: React.FC = () => {
-  const [value, setValue] = useState('');
-  const [keyword, setKeyword] = useState('');
+interface KeywordInputProps {
+  onSearch: React.Dispatch<SearchAction>;
+}
 
-  useEffect(() => {
-    console.log(Date.now(), keyword);
-  }, [keyword]);
+const KeywordInputComponent: React.FC<KeywordInputProps> = ({ onSearch }) => {
+  const [value, setValue] = useState('');
 
   const btnHandler = () => {
-    setKeyword(value);
+    onSearch({ type: SearchBy.KEYWORD, payload: value });
   };
 
   const keyDownHandler: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
@@ -27,7 +27,6 @@ const KeywordInputComponent: React.FC = () => {
         className="keyword-input"
         aria-label="Поиск по названию вакансии"
         type="text"
-        name="keyword"
         value={value}
         onInput={inputHandler}
         placeholder="Введите название вакансии"

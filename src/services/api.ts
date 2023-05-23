@@ -1,3 +1,5 @@
+import { DEFAULT_PUBLISHED, NO_AGREEMENT_TRUE } from '../const';
+
 const API_ORIGIN = 'https://startup-summer-proxy-production.up.railway.app';
 
 const API_ENDPOINT = {
@@ -55,24 +57,26 @@ export const getVacancies = async (
   token: string,
   params: {
     catalogues: number;
-    published: number;
     keyword?: string;
     paymentFrom?: number;
     paymentTo?: number;
   }
 ) => {
   const searchParams = new URLSearchParams();
-  searchParams.append('catalogues', params.catalogues.toString());
-  searchParams.append('published', params.published.toString());
   if (params.keyword) {
     searchParams.append('keyword', params.keyword);
   }
-  if (params.paymentFrom) {
+  if (params.paymentFrom !== undefined) {
     searchParams.append('payment_from', params.paymentFrom.toString());
   }
-  if (params.paymentTo) {
+  if (params.paymentTo !== undefined) {
     searchParams.append('payment_to', params.paymentTo.toString());
   }
+  if (params.paymentFrom !== undefined || params.paymentTo !== undefined) {
+    searchParams.append('no_agreement', NO_AGREEMENT_TRUE.toString());
+  }
+  searchParams.append('catalogues', params.catalogues.toString());
+  searchParams.append('published', DEFAULT_PUBLISHED.toString());
 
   const response = await fetch(`${API_ENDPOINT.vacancies}?${searchParams.toString()}`, {
     headers: {

@@ -1,6 +1,7 @@
 import { NumberInput, Select } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 import { getCatalogItems } from '../../services/catalogues-storage';
+import { DEFAULT_CATALOG } from '../../const';
 import './filter.css';
 
 interface SelectItem {
@@ -34,6 +35,7 @@ const FilterComponent: React.FC = () => {
             size="xl"
             rightSection={<IconChevronDown size="1.4rem" />}
             rightSectionWidth={30}
+            defaultValue={DEFAULT_CATALOG.toString()}
           />
         </div>
         <fieldset>
