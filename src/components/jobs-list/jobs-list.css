@@ -1,0 +1,12 @@
+.jobs-list-grid {
+  display: grid;
+  grid-template-columns: 31.5rem 1fr;
+  gap: 2.8rem;
+}
+
+@media screen and (max-width: 800px) {
+  .jobs-list-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+}

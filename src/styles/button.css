@@ -1,0 +1,45 @@
+.btn-prime {
+  padding-inline: 2rem;
+  border-radius: 0.8rem;
+  background-color: var(--clr-blue-500);
+  color: var(--clr-white);
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  transition: background-color 0.2s;
+}
+
+.btn-prime:hover {
+  background-color: var(--clr-blue-400);
+}
+
+.btn-prime:active {
+  background-color: var(--clr-blue-600);
+}
+
+.btn-size-m {
+  padding-block: 0.95rem;
+}
+
+.btn-size-s {
+  padding-block: 0.55rem;
+}
+
+.empty-item-btn {
+  grid-row: 3;
+  justify-self: center;
+  width: fit-content;
+  padding: 1rem 2.4rem;
+  background-color: var(--clr-blue-100);
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--clr-blue-600);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.empty-item-btn:hover {
+  background-color: var(--clr-blue-200);
+}

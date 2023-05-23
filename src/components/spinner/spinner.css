@@ -1,0 +1,35 @@
+.spinner {
+  height: 2.5rem;
+  width: calc(2.5rem * 3);
+  background-color: var(--clr-white);
+  border: 0.1rem solid var(--clr-grey-100);
+  border-radius: calc(Infinity * 1px);
+  aspect-ratio: 3 / 1;
+  display: grid;
+  grid-template-columns: repeat(3, 2.5rem);
+}
+
+.spinner-mark {
+  --transit-time: 1.2s;
+
+  width: 2.4rem;
+  aspect-ratio: 1;
+  border: 0.3rem solid var(--clr-white);
+  border-radius: 50%;
+  background-color: var(--clr-grey-100);
+  animation: spinner-transit var(--transit-time) infinite;
+}
+
+.spinner-mark:first-of-type {
+  animation-delay: calc(var(--transit-time) / -6);
+}
+
+.spinner-mark:last-of-type {
+  animation-delay: calc(var(--transit-time) / 6);
+}
+
+@keyframes spinner-transit {
+  50% {
+    background-color: var(--clr-blue-500);
+  }
+}

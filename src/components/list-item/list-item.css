@@ -1,0 +1,77 @@
+.card {
+  justify-self: center;
+  padding: 2.4rem;
+  max-width: 77.3rem;
+  width: 100%;
+  background-color: var(--clr-white);
+  border: 0.1rem solid var(--clr-grey-200);
+  border-radius: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 2.4rem;
+  gap: 1rem;
+}
+
+.card-info__wrapper {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.card-info__wrapper a {
+  width: fit-content;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--clr-blue-500);
+}
+
+.card-title-2 {
+  font-size: 2.8rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--clr-black);
+}
+
+.card-payment {
+  font-weight: var(--font-weight-semibold);
+}
+
+.card-delimiter {
+  margin-inline: 1.2rem;
+  color: var(--clr-grey-600);
+}
+
+.card-payment-2 {
+  font-weight: var(--font-weight-bold);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.card-delimiter-2 {
+  margin-inline: 1.2rem;
+  font-size: 2rem;
+  line-height: 2.1rem;
+  color: var(--clr-grey-600);
+}
+
+.card-type_of_work-2 {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.card-location {
+  position: relative;
+  padding-left: 2.8rem;
+}
+
+.card-location::before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(/src/assets/icons/location.svg);
+  background-size: cover;
+  background-repeat: repeat;
+}

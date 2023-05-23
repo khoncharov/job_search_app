@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--clr-bg);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  font-weight: var(--font-weight-regular);
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-black);
+}
+
+button {
+  border: none;
+  font: inherit;
+  background-color: unset;
+}
+
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+}
+
+li {
+  list-style: none;
+}
+
+fieldset {
+  border: none;
+}

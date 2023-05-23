@@ -1,0 +1,22 @@
+.favorite,
+.favorite-active {
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+}
+
+[aria-pressed='true'] path {
+  fill: var(--clr-blue-500);
+  stroke: var(--clr-blue-500);
+  transition: fill 0.2s;
+}
+
+[aria-pressed='false'] path {
+  fill: transparent;
+  stroke: var(--clr-grey-500);
+  transition: stroke 0.2s, fill 0.2s;
+}
+
+[aria-pressed='false']:hover path {
+  stroke: var(--clr-blue-500);
+}
