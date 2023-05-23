@@ -64,6 +64,15 @@ export const getVacancies = async (
   const searchParams = new URLSearchParams();
   searchParams.append('catalogues', params.catalogues.toString());
   searchParams.append('published', params.published.toString());
+  if (params.keyword) {
+    searchParams.append('keyword', params.keyword);
+  }
+  if (params.paymentFrom) {
+    searchParams.append('payment_from', params.paymentFrom.toString());
+  }
+  if (params.paymentTo) {
+    searchParams.append('payment_to', params.paymentTo.toString());
+  }
 
   const response = await fetch(`${API_ENDPOINT.vacancies}?${searchParams.toString()}`, {
     headers: {
