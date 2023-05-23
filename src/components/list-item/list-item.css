@@ -16,6 +16,10 @@
   gap: 1.6rem;
 }
 
+.card-info__wrapper a {
+  width: fit-content;
+}
+
 .card-title {
   font-size: 2rem;
   font-weight: var(--font-weight-semibold);

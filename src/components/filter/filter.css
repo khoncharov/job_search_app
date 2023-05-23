@@ -1,15 +1,86 @@
 .filter-container {
   width: 31.5rem;
-  height: 36rem;
+  height: max-content;
+  padding: 2rem;
   background-color: var(--clr-white);
   border: 0.1rem solid var(--clr-grey-200);
   border-radius: 1.2rem;
 }
 
+.filter-header {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+  margin-bottom: 3.2rem;
+}
+
+.filter-inputs-wrapper {
+  display: grid;
+  gap: 2rem;
+}
+
+.input-item-container {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.filter-header h2 {
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+}
+
+.input-item-container label,
+.input-item-container legend {
+  font-weight: var(--font-weight-bold);
+}
+
+.filter-reset-btn {
+  padding-right: 2rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-medius);
+  color: var(--clr-grey-500);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.filter-reset-btn:hover {
+  color: var(--clr-blue-400);
+}
+
+.filter-reset-btn:active {
+  color: var(--clr-blue-500);
+}
+
+.filter-reset-btn::after {
+  content: '';
+  position: absolute;
+  top: 0.2rem;
+  right: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: var(--clr-grey-500);
+  mask-image: url(/src/assets/icons/times.svg);
+  -webkit-mask-image: url(/src/assets/icons/times.svg);
+  transition: background-color 0.2s;
+}
+
+.filter-reset-btn:hover::after {
+  background-color: var(--clr-blue-400);
+}
+
+.filter-reset-btn:active::after {
+  background-color: var(--clr-blue-500);
+}
+
+.btn-filter-apply {
+  width: 100%;
+}
+
 @media screen and (max-width: 800px) {
   .filter-container {
     width: 100%;
-    height: 36rem;
     background-color: var(--clr-white);
     border: 0.1rem solid var(--clr-grey-200);
     border-radius: 1.2rem;
