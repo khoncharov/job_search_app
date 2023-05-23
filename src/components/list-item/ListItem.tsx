@@ -31,7 +31,7 @@ const ListItemComponent: React.FC<ListItemProps> = ({
   }
 
   return (
-    <li className="card">
+    <li className="card" data-elem={`vacancy-${id}`}>
       <article className="card-info__wrapper">
         {isAlone ? (
           <>

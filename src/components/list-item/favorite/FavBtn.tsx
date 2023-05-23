@@ -26,6 +26,7 @@ const FavBtnComponent: React.FC<FavBtnProps> = ({ itemId }) => {
       aria-label="Favorite item"
       aria-pressed={btnPressed}
       onClick={favBtnHandler}
+      data-elem={`vacancy-${itemId}-shortlist-button`}
     >
       <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
         <path

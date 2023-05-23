@@ -56,8 +56,6 @@ const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter
     setFilterState(() => ({
       ...filterDefaultState,
     }));
-
-    onApplyFilter({ type: SearchBy.FILTER, payload: filterDefaultState });
   };
 
   const applyBtnHandler = () => {
@@ -87,6 +85,7 @@ const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter
             onChange={catalogChangeHandler}
             value={filterState.catalog}
             styles={selectStyling}
+            data-elem="industry-select"
           />
         </div>
         <fieldset>
@@ -100,6 +99,7 @@ const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter
               onChange={inputFromChangeHandler}
               value={filterState.paymentFrom}
               styles={inputStyling}
+              data-elem="salary-from-input"
             />
             <NumberInput
               placeholder="До"
@@ -109,12 +109,14 @@ const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter
               onChange={inputToChangeHandler}
               value={filterState.paymentTo}
               styles={inputStyling}
+              data-elem="salary-to-input"
             />
           </div>
         </fieldset>
         <button
           className="btn-prime btn-size-m btn-filter-apply"
           onClick={applyBtnHandler}
+          data-elem="search-button"
         >
           Применить
         </button>

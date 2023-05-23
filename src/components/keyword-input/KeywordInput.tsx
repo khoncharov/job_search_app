@@ -35,12 +35,14 @@ const KeywordInputComponent: React.FC<KeywordInputProps> = ({
         onInput={inputHandler}
         placeholder="Введите название вакансии"
         onKeyDown={keyDownHandler}
+        data-elem="search-input"
       />
       <div className="keyword-input__icon"></div>
       <button
         type="button"
         className="btn-prime btn-size-s keyword-input__btn"
         onClick={btnHandler}
+        data-elem="search-button"
       >
         Поиск
       </button>
