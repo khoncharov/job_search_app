@@ -7,6 +7,11 @@ const API_ENDPOINT = {
   vacancies: `${API_ORIGIN}/2.0/vacancies/`,
 } as const;
 
+const commonHeaders = {
+  'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
+  'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
+};
+
 export const getAccessToken = async () => {
   const searchParams = new URLSearchParams();
   searchParams.append('login', import.meta.env.VITE_AUTH_LOGIN);
@@ -16,10 +21,7 @@ export const getAccessToken = async () => {
   searchParams.append('hr', import.meta.env.VITE_HR);
 
   const response = await fetch(`${API_ENDPOINT.accessToken}?${searchParams.toString()}`, {
-    headers: {
-      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
-      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
-    },
+    headers: commonHeaders,
   });
 
   return response;
@@ -34,10 +36,7 @@ export const refreshAccessToken = async (refreshToken: string) => {
   const response = await fetch(
     `${API_ENDPOINT.refreshToken}?${searchParams.toString()}`,
     {
-      headers: {
-        'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
-        'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
-      },
+      headers: commonHeaders,
     }
   );
 
@@ -46,24 +45,29 @@ export const refreshAccessToken = async (refreshToken: string) => {
 
 export const getCatalogues = async () => {
   const response = await fetch(API_ENDPOINT.catalogues, {
-    headers: {
-      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
-      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
-    },
+    headers: commonHeaders,
   });
 
   return response;
 };
 
-export const getVacancies = async (token: string, params: { catalogues: number }) => {
+export const getVacancies = async (
+  token: string,
+  params: {
+    catalogues: number;
+    published: number;
+    keyword?: string;
+    paymentFrom?: number;
+    paymentTo?: number;
+  }
+) => {
   const searchParams = new URLSearchParams();
   searchParams.append('catalogues', params.catalogues.toString());
-  /* [ keyword, payment from to, domain id ] */
+  searchParams.append('published', params.published.toString());
 
   const response = await fetch(`${API_ENDPOINT.vacancies}?${searchParams.toString()}`, {
     headers: {
-      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
-      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
+      ...commonHeaders,
       Authorization: `Bearer ${token}`,
     },
   });
@@ -79,8 +83,7 @@ export const getFavVacancies = async (token: string, ids: number[]) => {
 
   const response = await fetch(`${API_ENDPOINT.vacancies}?${searchParams.toString()}`, {
     headers: {
-      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
-      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
+      ...commonHeaders,
       Authorization: `Bearer ${token}`,
     },
   });
@@ -91,8 +94,7 @@ export const getFavVacancies = async (token: string, ids: number[]) => {
 export const getVacancy = async (token: string, jobId: string) => {
   const response = await fetch(`${API_ENDPOINT.vacancies}${jobId}/`, {
     headers: {
-      'X-Secret-Key': import.meta.env.VITE_X_SECRET_KEY,
-      'X-Api-App-Id': import.meta.env.VITE_CLIENT_SECRET,
+      ...commonHeaders,
       Authorization: `Bearer ${token}`,
     },
   });
