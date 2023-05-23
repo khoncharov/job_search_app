@@ -21,5 +21,4 @@ export const selectStyling = {
     color: 'var(--clr-grey-500)',
     paddingRight: '0.8rem',
   },
-  dropdown: { overflow: 'hidden' },
 };
