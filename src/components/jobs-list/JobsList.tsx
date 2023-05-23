@@ -11,6 +11,13 @@ import { mapVacanciesResponse } from '../../services/utils';
 import { SearchState, initState, reducer } from './jobs-list-reducer';
 import './jobs-list.css';
 
+const formatPayment = (value: number | '') => {
+  if (value === '') {
+    return undefined;
+  }
+  return value;
+};
+
 const updateVacancies = async (
   state: SearchState,
   setList: React.Dispatch<React.SetStateAction<Vacancy[]>>
@@ -18,8 +25,10 @@ const updateVacancies = async (
   const tokenInfo = await checkToken();
 
   const response = await getVacancies(tokenInfo.accessToken, {
-    catalogues: state.catalog,
+    catalogues: Number(state.filter.catalog),
     keyword: state.keyword,
+    paymentFrom: formatPayment(state.filter.paymentFrom),
+    paymentTo: formatPayment(state.filter.paymentTo),
   });
 
   if (!response.ok) {
@@ -44,9 +53,9 @@ const JobsListComponent: React.FC = () => {
     return (
       <main className="main-list">
         <div className="jobs-list-grid">
-          <FilterComponent />
+          <FilterComponent onApplyFilter={dispatch} filterInitState={state.filter} />
           <div className="list-container">
-            <KeywordInputComponent onSearch={dispatch} />
+            <KeywordInputComponent onSearch={dispatch} keywordInitState={state.keyword} />
             <ul className="list-container">
               {vacanciesList.map((v) => (
                 <ListItemComponent key={v.id} {...v} isAlone={false} />
@@ -61,9 +70,9 @@ const JobsListComponent: React.FC = () => {
   return (
     <main className="main-list">
       <div className="jobs-list-grid">
-        <FilterComponent />
+        <FilterComponent onApplyFilter={dispatch} filterInitState={state.filter} />
         <div className="list-container">
-          <KeywordInputComponent onSearch={dispatch} />
+          <KeywordInputComponent onSearch={dispatch} keywordInitState={state.keyword} />
           <div className="list-container">
             <EmptyItemComponent />
           </div>

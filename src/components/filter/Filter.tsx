@@ -1,6 +1,8 @@
-import { NumberInput, Select } from '@mantine/core';
+import { useState } from 'react';
+import { NumberInput, Select, rem } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 import { getCatalogItems } from '../../services/catalogues-storage';
+import { FilterState, SearchAction, SearchBy } from '../jobs-list/jobs-list-reducer';
 import { DEFAULT_CATALOG } from '../../const';
 import './filter.css';
 
@@ -9,18 +11,63 @@ interface SelectItem {
   label: string;
 }
 
-const FilterComponent: React.FC = () => {
-  const catalogues = getCatalogItems();
-  const selectList: SelectItem[] = catalogues.map((i) => ({
+interface FilterProps {
+  filterInitState: FilterState;
+  onApplyFilter: React.Dispatch<SearchAction>;
+}
+
+const filterDefaultState: FilterState = {
+  catalog: DEFAULT_CATALOG.toString(),
+  paymentFrom: '',
+  paymentTo: '',
+};
+
+const FilterComponent: React.FC<FilterProps> = ({ filterInitState, onApplyFilter }) => {
+  const [filterState, setFilterState] = useState<FilterState>(filterInitState);
+
+  const selectList: SelectItem[] = getCatalogItems().map((i) => ({
     value: i.key.toString(),
     label: i.title,
   }));
+
+  const catalogChangeHandler = (value: string) => {
+    setFilterState(() => ({
+      ...filterState,
+      catalog: value,
+    }));
+  };
+
+  const inputFromChangeHandler = (value: number | '') => {
+    setFilterState(() => ({
+      ...filterState,
+      paymentFrom: value,
+    }));
+  };
+
+  const inputToChangeHandler = (value: number | '') => {
+    setFilterState(() => ({
+      ...filterState,
+      paymentTo: value,
+    }));
+  };
+
+  const resetBtnHandler = () => {
+    setFilterState(() => ({
+      ...filterDefaultState,
+    }));
+
+    onApplyFilter({ type: SearchBy.FILTER, payload: filterDefaultState });
+  };
+
+  const applyBtnHandler = () => {
+    onApplyFilter({ type: SearchBy.FILTER, payload: filterState });
+  };
 
   return (
     <div className="filter-container">
       <div className="filter-header">
         <h2>Фильтры</h2>
-        <button type="button" className="filter-reset-btn">
+        <button type="button" className="filter-reset-btn" onClick={resetBtnHandler}>
           Сбросить все
         </button>
       </div>
@@ -33,19 +80,40 @@ const FilterComponent: React.FC = () => {
             data={selectList}
             radius="0.8rem"
             size="xl"
-            rightSection={<IconChevronDown size="1.4rem" />}
+            rightSection={<IconChevronDown size={rem(40)} />}
             rightSectionWidth={30}
-            defaultValue={DEFAULT_CATALOG.toString()}
+            defaultValue={filterInitState.catalog}
+            onChange={catalogChangeHandler}
+            value={filterState.catalog}
           />
         </div>
         <fieldset>
           <div className="input-item-container">
             <legend>Оклад</legend>
-            <NumberInput placeholder="От" radius="0.8rem" size="xl" />
-            <NumberInput placeholder="До" radius="0.8rem" size="xl" />
+            <NumberInput
+              placeholder="От"
+              radius="0.8rem"
+              size="xl"
+              defaultValue={filterInitState.paymentFrom}
+              onChange={inputFromChangeHandler}
+              value={filterState.paymentFrom}
+            />
+            <NumberInput
+              placeholder="До"
+              radius="0.8rem"
+              size="xl"
+              defaultValue={filterInitState.paymentTo}
+              onChange={inputToChangeHandler}
+              value={filterState.paymentTo}
+            />
           </div>
         </fieldset>
-        <button className="btn-prime btn-size-m btn-filter-apply">Применить</button>
+        <button
+          className="btn-prime btn-size-m btn-filter-apply"
+          onClick={applyBtnHandler}
+        >
+          Применить
+        </button>
       </div>
     </div>
   );

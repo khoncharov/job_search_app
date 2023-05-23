@@ -3,11 +3,15 @@ import { SearchAction, SearchBy } from '../jobs-list/jobs-list-reducer';
 import './keyword-input.css';
 
 interface KeywordInputProps {
+  keywordInitState: string;
   onSearch: React.Dispatch<SearchAction>;
 }
 
-const KeywordInputComponent: React.FC<KeywordInputProps> = ({ onSearch }) => {
-  const [value, setValue] = useState('');
+const KeywordInputComponent: React.FC<KeywordInputProps> = ({
+  onSearch,
+  keywordInitState,
+}) => {
+  const [value, setValue] = useState(keywordInitState);
 
   const btnHandler = () => {
     onSearch({ type: SearchBy.KEYWORD, payload: value });

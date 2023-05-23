@@ -1,36 +1,55 @@
-import { DEFAULT_CATALOG, DEFAULT_PAYMENT_FROM, DEFAULT_PAYMENT_TO } from '../../const';
+import { DEFAULT_CATALOG } from '../../const';
 
 export enum SearchBy {
   KEYWORD = 'keyword',
-  CATALOG = 'catalog',
-  PAYMENT_FROM = 'payment_from',
-  PAYMENT_TO = 'payment_to',
+  FILTER = 'filter',
 }
 
 export interface SearchAction {
   type: SearchBy;
-  payload: string;
+  payload: string | FilterState;
+}
+
+export interface FilterState {
+  catalog: string;
+  paymentFrom: number | '';
+  paymentTo: number | '';
 }
 
 export interface SearchState {
   keyword: string;
-  catalog: number;
-  paymentFrom: number;
-  paymentTo: number;
+  filter: FilterState;
 }
 
+const keyWordInitState = '';
+
+const filterInitState: FilterState = {
+  catalog: DEFAULT_CATALOG.toString(),
+  paymentFrom: '',
+  paymentTo: '',
+};
+
 export const initState = {
-  keyword: '',
-  catalog: DEFAULT_CATALOG,
-  paymentFrom: DEFAULT_PAYMENT_FROM,
-  paymentTo: DEFAULT_PAYMENT_TO,
+  keyword: keyWordInitState,
+  filter: filterInitState,
 };
 
 export const reducer = (state: SearchState, action: SearchAction) => {
   switch (action.type) {
-    case 'keyword': {
-      if (state.keyword !== action.payload) {
+    case SearchBy.KEYWORD: {
+      if (typeof action.payload === 'string' && state.keyword !== action.payload) {
         return { ...state, keyword: action.payload };
+      }
+      return state;
+    }
+    case SearchBy.FILTER: {
+      if (
+        typeof action.payload !== 'string' &&
+        (state.filter.catalog !== action.payload.catalog ||
+          state.filter.paymentFrom !== action.payload.paymentFrom ||
+          state.filter.paymentTo !== action.payload.paymentTo)
+      ) {
+        return { ...state, filter: action.payload };
       }
       return state;
     }
