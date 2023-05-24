@@ -60,24 +60,25 @@ const JobsListComponent: React.FC = () => {
         <FilterComponent onApplyFilter={dispatch} filterInitState={state.filter} />
         <div className="list-container">
           <KeywordInputComponent onSearch={dispatch} keywordInitState={state.keyword} />
-          {vacanciesList.length > 0 ? (
-            <ul className="list-container">
-              {vacanciesList.map((v) => (
-                <ListItemComponent key={v.id} {...v} isAlone={false} />
-              ))}
-            </ul>
+          {!isLoading ? (
+            vacanciesList.length > 0 ? (
+              <ul className="list-container">
+                {vacanciesList.map((v) => (
+                  <ListItemComponent key={v.id} {...v} isAlone={false} />
+                ))}
+              </ul>
+            ) : (
+              <div className="list-container">
+                <EmptyItemComponent />
+              </div>
+            )
           ) : (
-            <div className="list-container">
-              <EmptyItemComponent />
+            <div className="overlay-container">
+              <SpinnerComponent />
             </div>
           )}
         </div>
       </div>
-      {isLoading ? (
-        <div className="overlay-container">
-          <SpinnerComponent />
-        </div>
-      ) : null}
     </main>
   );
 };
