@@ -8,6 +8,7 @@
 .list-container {
   display: grid;
   gap: 1.6rem;
+  grid-template-rows: min-content 1fr;
 }
 
 .filling-container {
